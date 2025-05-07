@@ -11,13 +11,12 @@ public class CameraControl : MonoBehaviour
     {
         offset = transform.position - target.position;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (target == null)
             return;
-        Vector3 cameraTarget = offset + target.position;
+        
+        Vector3 cameraTarget = transform.position = offset + target.position;
         transform.position = Vector3.Lerp(transform.position, cameraTarget, smoothTime * Time.deltaTime);
     }
 }
