@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] protected int spawnCount = 0;
     [SerializeField] protected float spawnInterval = 2f;
     [SerializeField] private Transform target;
-    
+
     public virtual void Start()
     {
         StartSpawn();
@@ -21,17 +22,10 @@ public class Spawner : MonoBehaviour
             Invoke("SpawnObject", i * spawnInterval);
         }
     }
-    
     private void SpawnObject()
     {
         GameObject spawnedObject = Instantiate(toSpawn, transform.position, Quaternion.identity);
         Enemy enemy = spawnedObject.GetComponent<Enemy>();
         enemy.target = target;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

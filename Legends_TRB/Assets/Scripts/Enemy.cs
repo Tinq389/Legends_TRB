@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public Transform target;
     [SerializeField] private Collider swordCollider;
     [SerializeField] private float attackInterval = 1.5f;
+    [SerializeField] private AudioSource deathSound;
     
     private float lastAttacktTime = 0;
     private NavMeshAgent agent;
@@ -37,6 +38,11 @@ public class Enemy : MonoBehaviour
         Debug.Log(name + " HAS DIED!");
         isDead = true;
         agent.isStopped = false;
+        
+        if (deathSound != null)
+        {
+            deathSound.Play();
+        }
     }
     private void Update()
     {

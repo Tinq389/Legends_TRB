@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 20;
 
-
     public Collider[] swordColliders;
 
     public LayerMask layerMask;
@@ -37,14 +36,12 @@ public class PlayerController : MonoBehaviour
         {
             laserDot.transform.position = hit.point;
 
-
             Vector3 targetPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
             Quaternion rotation = Quaternion.LookRotation(targetPosition - transform.position);
             //transform.rotation = rotation;
             //make it slow
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime*10f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 10f);
         }
-
 
         //left
         if (Input.GetMouseButtonDown(0))
@@ -61,11 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             
         }
-
-
-
     }
-
 
     public void BeginAttack()
     {
@@ -74,6 +67,7 @@ public class PlayerController : MonoBehaviour
             swordCollider.enabled = true;
         }
     }
+
     public void EndAttack()
     {
         foreach (Collider swordCollider in swordColliders)
@@ -81,5 +75,4 @@ public class PlayerController : MonoBehaviour
             swordCollider.enabled = false;
         }
     }
-    
 }

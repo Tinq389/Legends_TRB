@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class TriggerSpawner : Spawner
 {
-    public bool isSpawned;
-    public void Start()
+    private bool hasSpawned = false;
+
+    public override void Start()
     {
         
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasSpawned)
         {
+            hasSpawned = true;
             StartSpawn();
         }
     }

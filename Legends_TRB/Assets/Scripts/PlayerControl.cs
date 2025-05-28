@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     private CharacterController characterController;
     private Animator animator;
     private Vector3 targetPosition;
-    
+    [SerializeField] private AudioSource swordSwingAudio;
     void Start()
     {
         ToggleWeapons(false);
@@ -62,6 +62,7 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             animator.SetTrigger("Stab");
+            swordSwingAudio.Play();
         }
     }
 }
